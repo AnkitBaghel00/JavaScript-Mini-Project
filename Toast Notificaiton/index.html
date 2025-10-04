@@ -8,18 +8,30 @@
 </head>
 <body>
     <div class="buttons">
-        <button onclick="showToast()">Success</button>
-        <button onclick="showToast()">Error</button>
-        <button onclick="showToast()">Invalid</button>
+        <button onclick="showToast(successMsg)">Success</button>
+        <button onclick="showToast(errorMsg)">Error</button>
+        <button onclick="showToast(invalidMsg)">Invalid</button>
     </div>
 
     <div id="toastBox"></div>
 
 
     <script>
-        function showToast(){
+
+        let toastBox = document.getElementById('toastBox');
+        let successMsg = '<i class="fa-solid fa-square-check"></i> Successfully submitted';
+        let errorMsg = '<i class="fa-solid fa-square-xmark"></i> Please fix the error!';
+        let invalidMsg = '<i class="fa-solid fa-exclamation"></i> Invalid input, check again';
+
+        function showToast(msg){
            let toast = document.createElement('div');
            toast.classList.add('toast');
+           toast.innerHTML = msg;
+           toastBox.appendChild(toast);
+
+           setTimeout(() =>{
+            toast.remove();
+           },6000);
         }
     </script>
 </body>
